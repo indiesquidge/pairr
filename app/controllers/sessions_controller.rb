@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       redirect_to dashboard_path
+      flash[:success] = "Welcome #{user.login}"
     else
       redirect_to root_path
     end
