@@ -1,2 +1,3 @@
 <%= image_tag current_user.avatar_url %>
 <p><%= current_user.login %></p>
+<p><%= link_to "Logout", logout_path, method: :delete %></p>

@@ -12,6 +12,18 @@ RSpec.describe "As a new user", type: :feature do
       expect(page).to have_content(user.name)
     end
 
+    it "I should be able to logout if logged in" do
+      page.visit root_path
+      mock_omniauth_user
+
+      page.click_on "Login with GitHub"
+      expect(page.current_path).to eq(dashboard_path)
+
+      page.click_on "Logout"
+      expect(page.current_path).to eq(root_path)
+      expect(page).to have_content("Successfully logged out")
+    end
+
     it "I should not be able to visit another route without being logged in" do
       page.visit dashboard_path
 
