@@ -12,4 +12,16 @@ class User < ActiveRecord::Base
 
     user
   end
+
+  def self.populate_potential_matches(user)
+    if user.potential_matches.empty?
+      User.all.each do |u|
+        unless u.id == user.id
+          user.potential_matches << u.id
+        end
+      end
+    end
+    user.potential_matches.shuffle!
+    user.save!
+  end
 end
