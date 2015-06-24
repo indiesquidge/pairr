@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authorize_user
+
   def show
     @user = User.find(params[:id])
   end
@@ -20,6 +22,7 @@ class UsersController < ApplicationController
     user.update_attributes(description: params[:description])
     user.save
 
-    redirect_to user_path(user)
+  def authorize_user
+    redirect_to dashboard_path if current_user.id != params[:id].to_i
   end
 end
