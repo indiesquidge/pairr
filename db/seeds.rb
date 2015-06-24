@@ -4,7 +4,6 @@ class Seed
   def call
     generate_languages
     generate_users
-    generate_potential_matches
   end
 
   def generate_languages
