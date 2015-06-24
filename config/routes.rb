@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   resources :users, only: [:edit, :update, :show]
+  resources :matching, only: [:show, :update]
 
   get "/dashboard", to: "dashboard#show"
 end
