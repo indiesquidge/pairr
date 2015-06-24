@@ -10,14 +10,14 @@
         <div class="card-content">
           <%= @random_user.description %>
           <h5>Preferred Languages</h6>
-            <% @random_user.languages.each do |lang| %>
-              <%= lang.name %>,
-            <% end %>
+          <% @random_user.languages.each do |lang| %>
+            <%= lang.name %>,
+          <% end %>
         </div>
 
         <div class="card-action center-align">
-          <%= link_to "Approve", match_path(@random_user), params: { status: "pending" }, action: :update, method: :patch %>
-          <%= link_to "Reject", match_path(@random_user),  params: { status: "rejected" },  action: :update, method: :patch %>
+          <%= button_to "Approve", match_path(@random_user), params: { status: "pending" }, action: :update, method: :patch, class: "btn col s6" %>
+          <%= button_to "Reject", match_path(@random_user),  params: { status: "rejected" },  action: :update, method: :patch, class: "btn col s6"%>
         </div>
       </div>
     </div>
