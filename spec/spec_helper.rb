@@ -30,7 +30,8 @@ def login_helper
 
   page.click_on "Login with GitHub"
   other_user1 = User.create!(login: "other_user1")
-  other_user2 = User.create!(login: "other_user2")
-  user.potential_matches << other_user1.id << other_user2.id
+  user.potential_matches << other_user1.id
   user.save!
+
+  user
 end
