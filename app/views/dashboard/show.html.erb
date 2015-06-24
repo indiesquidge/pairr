@@ -1,3 +1,13 @@
 <h1>Dashboard</h1>
 <h3>Matches</h3>
 <%= button_to "Find Pairs", match_path(@random_user), method: :get %>
+
+<% if @approved_pairs.empty? %>
+  <p>No matches yet!</p>
+<% else %>
+  <ul>
+    <% @approved_pairs.each do |pair| %>
+      <li><%= pair.login %></li>
+    <% end %>
+  </ul>
+<% end %>
