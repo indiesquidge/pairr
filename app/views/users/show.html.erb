@@ -1,9 +1,13 @@
 <%= image_tag @user.avatar_url %>
 <p><%= @user.login %></p>
-<p><%= link_to "Logout", logout_path, method: :delete %></p>
+<% if @user == current_user %>
+  <p><%= link_to "Logout", logout_path, method: :delete %></p>
+<% end %>
+
+<%= button_to "Find Pairs", matching_path, method: :get %>
 
 <h4>Description</h4>
-  <%= @user.description %>
+<%= @user.description %>
 
 <h4>Preferred Languages</h4>
 <ul class="preferred-languages">
@@ -12,4 +16,6 @@
   <% end %>
 </ul>
 
-<%= link_to "Update info", edit_user_path(@user) %>
+<% if @user == current_user %>
+  <%= link_to "Update info", edit_user_path(@user) %>
+<% end %>
