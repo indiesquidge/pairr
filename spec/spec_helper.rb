@@ -28,7 +28,9 @@ def login_helper
   page.visit root_path
   user = User.find_or_create_from_auth(mock_omniauth_user)
 
-  page.click_on "Login with GitHub"
+  within "nav" do
+    page.click_on "Login"
+  end
   other_user1 = User.create!(login: "other_user1")
   user.potential_matches << other_user1.id
   user.save!
