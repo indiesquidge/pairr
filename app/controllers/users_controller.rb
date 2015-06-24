@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def edit
     @user      = User.find(params[:id])
     @languages = Language.all
+    User.populate_potential_matches(current_user)
   end
 
   def update

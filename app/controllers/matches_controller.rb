@@ -13,7 +13,7 @@ class MatchesController < ApplicationController
     current_user.potential_matches.delete(potential_match_id)
     current_user.save!
 
-    next_random_user = User.find(current_user.potential_matches.sample)
+    next_random_user = User.find(current_user.potential_matches.first)
     redirect_to match_path(next_random_user)
   end
 end
