@@ -1,13 +1,22 @@
-<h2>User Information</h2>
-<p>Hold up there, <%= current_user.login %>. Let's gather just a bit more information...</p>
+<div class="container">
+  <div class="row">
 
-<%= form_for current_user, url: user_path(current_user), html: { method: "patch" } do |f| %>
-  <h4>Brief Description of yourself</h4>
-  <textarea id="user-description" name="description" rows="10" cols="50" placeholder="describe what you're looing for in a pair, your interests, etc." required="required"></textarea><br />
-  <h4>Preferred Languages</h4>
-  <% @languages.each do |lang| %>
-    <input id="<%= lang.name %>" name="languages[]" type="checkbox" value="<%= lang.name %>" />
-    <label for="<%= lang.name %>"><%= lang.name %></label><br />
-  <% end %>
-  <input type="submit" value="Update info" disabled/>
-<% end %>
+    <h2>User Information</h2>
+    <p>Hey there <%= link_to current_user.login, current_user %>. Can you tell us a bit about yourself?</p>
+
+    <%= form_for current_user, url: user_path(current_user), html: { method: "patch" } do |f| %>
+      <h4>Brief Description of yourself</h4>
+      <div class="input-field col s12">
+        <textarea id="user-description" class="materialize-textarea" name="description" length="500" required="required"></textarea><br />
+        <label for="user-description">What are you looking for in a pair? What are your interests?</label>
+      </div>
+      <h4>Preferred Languages</h4>
+      <% @languages.each do |lang| %>
+        <input id="<%= lang.name %>" name="languages[]" type="checkbox" value="<%= lang.name %>" />
+        <label for="<%= lang.name %>"><%= lang.name %></label><br />
+      <% end %>
+      <input type="submit" value="Update info" class="btn" disabled/>
+    <% end %>
+
+  </div>
+</div>
