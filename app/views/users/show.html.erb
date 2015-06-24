@@ -1,15 +1,27 @@
-<%= image_tag current_user.avatar_url %>
-<p><%= current_user.login %></p>
-<p><%= link_to "Logout", logout_path, method: :delete %></p>
+<div class="container">
+  <div class="row">
 
-<h4>Description</h4>
-<%= current_user.description %>
+    <div class="col s12 m5">
+      <div class="card">
+        <div class="card-image">
+          <%= image_tag current_user.avatar_url %>
+          <span class="card-title"><%= current_user.login %></span>
+        </div>
 
-<h4>Preferred Languages</h4>
-<ul class="preferred-languages">
-  <% current_user.languages.each do |lang| %>
-    <li><%= lang.name %></li>
-  <% end %>
-</ul>
+        <div class="card-content">
+          <%= current_user.description %>
+          <h5>Preferred Languages</h5>
+          <% current_user.languages.each do |lang| %>
+            <%= lang.name %>,
+          <% end %>
+        </div>
 
-<%= link_to "Update info", edit_user_path(current_user) %>
+        <div class="card-action center-align">
+          <%= link_to "Update info", edit_user_path(current_user) %>
+          <%= link_to "Logout", logout_path, method: :delete %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
