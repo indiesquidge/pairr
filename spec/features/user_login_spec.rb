@@ -7,7 +7,7 @@ RSpec.describe "As a new user", type: :feature do
       page.visit root_path
       mock_omniauth_user
 
-      expect(page).to have_content("Login with GitHub")
+      expect(page).to have_content("Please Login to continue")
     end
 
     it "I should not be able to access the dashboard until I log in" do
@@ -45,8 +45,12 @@ RSpec.describe "As a new user", type: :feature do
       page.find("input#Java").set(false)
       page.find_button("Update info", disabled: true).click
 
-      page.click_on "Logout"
-      page.click_on "Login with GitHub"
+      within ".side-nav" do
+        page.click_on "Logout"
+      end
+      within "nav" do
+        page.click_on "Login"
+      end
       expect(page).to have_content("Welcome")
     end
   end
