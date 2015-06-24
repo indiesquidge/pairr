@@ -1,7 +1,7 @@
 <h2>User Information</h2>
-<p>Hold up there, <%= @user.login %>. Let's gather just a bit more information...</p>
+<p>Hold up there, <%= current_user.login %>. Let's gather just a bit more information...</p>
 
-<%= form_for @user, url: user_path(@user), html: { method: "patch" } do |f| %>
+<%= form_for current_user, url: user_path(current_user), html: { method: "patch" } do |f| %>
   <h4>Brief Description of yourself</h4>
   <textarea id="user-description" name="description" rows="10" cols="50" placeholder="describe what you're looing for in a pair, your interests, etc." required="required"></textarea><br />
   <h4>Preferred Languages</h4>

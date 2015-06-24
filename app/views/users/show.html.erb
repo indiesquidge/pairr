@@ -1,19 +1,15 @@
-<%= image_tag @user.avatar_url %>
-<p><%= @user.login %></p>
-<% if @user == current_user %>
-  <p><%= link_to "Logout", logout_path, method: :delete %></p>
-<% end %>
+<%= image_tag current_user.avatar_url %>
+<p><%= current_user.login %></p>
+<p><%= link_to "Logout", logout_path, method: :delete %></p>
 
 <h4>Description</h4>
-<%= @user.description %>
+<%= current_user.description %>
 
 <h4>Preferred Languages</h4>
 <ul class="preferred-languages">
-  <% @user.languages.each do |lang| %>
+  <% current_user.languages.each do |lang| %>
     <li><%= lang.name %></li>
   <% end %>
 </ul>
 
-<% if @user == current_user %>
-  <%= link_to "Update info", edit_user_path(@user) %>
-<% end %>
+<%= link_to "Update info", edit_user_path(current_user) %>
