@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       if user.languages.empty?
         redirect_to edit_user_path(user)
       else
-        redirect_to user_path(user)
+        redirect_to dashboard_path
         flash[:success] = "Welcome #{user.login}"
       end
       user.save

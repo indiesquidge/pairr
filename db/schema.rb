@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624010713) do
+ActiveRecord::Schema.define(version: 20150624043844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "potential_match_id"
+    t.integer "status",             default: 0
   end
 
   create_table "userlanguages", force: :cascade do |t|
@@ -33,9 +39,10 @@ ActiveRecord::Schema.define(version: 20150624010713) do
     t.string   "provider"
     t.string   "token"
     t.string   "uid"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "description"
+    t.integer  "potential_matches", default: [],              array: true
   end
 
 end
