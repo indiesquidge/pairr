@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150624043844) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "potentail_match_id"
+    t.integer "potential_match_id"
     t.integer "status",             default: 0
   end
 
