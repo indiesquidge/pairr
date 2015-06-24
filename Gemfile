@@ -8,6 +8,8 @@ gem "coffee-rails", "~> 4.1.0"
 gem "jquery-rails"
 gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
+gem "figaro"
+gem "omniauth-github"
 
 group :development, :test do
   gem "byebug"
@@ -15,5 +17,10 @@ group :development, :test do
   gem "spring"
   gem "rspec-rails"
   gem "capybara"
+  gem "pry-rails"
+  gem "launchy"
 end
 
+group :test do
+  gem "database_cleaner"
+end

@@ -1,0 +1,13 @@
+<h2>User Information</h2>
+<p>Hold up there, <%= @user.login %>. Let's gather just a bit more information...</p>
+
+<%= form_for @user, url: user_path(@user), html: { method: "patch" } do |f| %>
+  <h4>Brief Description of yourself</h4>
+  <textarea id="user-description" name="description" rows="10" cols="50" placeholder="describe what you're looing for in a pair, your interests, etc." required="required"></textarea><br />
+  <h4>Preferred Languages</h4>
+  <% @languages.each do |lang| %>
+    <input id="<%= lang.name %>" name="languages[]" type="checkbox" value="<%= lang.name %>" />
+    <label for="<%= lang.name %>"><%= lang.name %></label><br />
+  <% end %>
+  <input type="submit" value="Update info" disabled/>
+<% end %>
