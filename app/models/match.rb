@@ -1,5 +1,15 @@
 class Match < ActiveRecord::Base
-  belongs_to :user
-
   enum status: [ :inactive, :pending, :rejected, :matched ]
+
+  def self.pending_matches(user)
+    where.not(user_id: user.id)
+    where(potential_match_id: user.id, status: 1)
+    .pluck(:user_id)
+  end
+
+  def self.pending_matches_first(user)
+    pending_matches = pending_matches(user)
+    user.potential_matches - pending_matches
+    user.potential_matches = pending_matches + user.potential_matches
+  end
 end
