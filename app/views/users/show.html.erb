@@ -1,15 +1,15 @@
-<%= image_tag current_user.avatar_url %>
-<p><%= current_user.login %></p>
+<%= image_tag @user.avatar_url %>
+<p><%= @user.login %></p>
 <p><%= link_to "Logout", logout_path, method: :delete %></p>
 
 <h4>Description</h4>
-  <%= current_user.description %>
+  <%= @user.description %>
 
 <h4>Preferred Languages</h4>
 <ul class="preferred-languages">
-  <% current_user.languages.each do |lang| %>
+  <% @user.languages.each do |lang| %>
     <li><%= lang.name %></li>
   <% end %>
 </ul>
 
-<%= link_to "Update info", edit_user_path(current_user) %>
+<%= link_to "Update info", edit_user_path(@user) %>
