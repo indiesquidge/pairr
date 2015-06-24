@@ -23,3 +23,10 @@ def mock_omniauth_user
     }
   })
 end
+
+def login_helper
+  page.visit root_path
+  mock_omniauth_user
+
+  page.click_on "Login with GitHub"
+end
