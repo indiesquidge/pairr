@@ -1,15 +1,26 @@
-<%= image_tag @random_user.avatar_url %>
-<p><%= @random_user.login %></p>
+<div class="container">
+  <div class="row">
 
-<h4>Description</h4>
-<%= @random_user.description %>
+    <div class="col s12 m5">
+      <div class="card">
+        <div class="card-image">
+          <%= image_tag @random_user.avatar_url %>
+          <span class="card-title"><%= @random_user.login %></span>
+        </div>
+        <div class="card-content">
+          <%= @random_user.description %>
+          <h5>Preferred Languages</h6>
+            <% @random_user.languages.each do |lang| %>
+              <%= lang.name %>,
+            <% end %>
+        </div>
 
-<h4>Preferred Languages</h4>
-<ul class="preferred-languages">
-  <% @random_user.languages.each do |lang| %>
-    <li><%= lang.name %></li>
-  <% end %>
-</ul>
+        <div class="card-action center-align">
+          <%= link_to "Approve", match_path(@random_user), params: { status: "pending" }, action: :update, method: :patch %>
+          <%= link_to "Reject", match_path(@random_user),  params: { status: "rejected" },  action: :update, method: :patch %>
+        </div>
+      </div>
+    </div>
 
-<%= button_to "Approve", match_path(@random_user), params: { status: "pending" }, action: :update, method: :patch %>
-<%= button_to "Reject", match_path(@random_user),  params: { status: "rejected" },  action: :update, method: :patch %>
+  </div>
+</div>
